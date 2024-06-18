@@ -1,0 +1,4 @@
+.selectionBar {
+  display: flex;
+  justify-content: space-between;
+}
