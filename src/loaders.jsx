@@ -36,3 +36,22 @@ export async function showLoader({ request, params }) {
     return resData;
   }
 }
+
+export async function genreLoader({ request, params }) {
+  // Get param
+  const id = params.genreId;
+
+  // Use param to make a dynamic fetch path
+  const response = await fetch(`https://podcast-api.netlify.app/genre/${id}`);
+  if (!response.ok) {
+    throw json(
+      {
+        message: 'Could not fetch page for selected genre.',
+      },
+      { status: 500 }
+    );
+  } else {
+    const resData = await response.json();
+    return resData;
+  }
+}
