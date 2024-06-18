@@ -27,6 +27,7 @@ const router = createBrowserRouter([
       {
         path: 'search/:genreId/show/:showId',
         element: <Show />,
+        loader: showLoader,
       },
       { path: 'library', element: <Library /> },
     ],
