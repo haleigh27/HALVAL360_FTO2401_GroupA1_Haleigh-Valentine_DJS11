@@ -42,4 +42,5 @@
 .description {
   height: 3rem;
   overflow-y: hidden; /* FIXME: Add show more button */
+  text-overflow: ellipsis; /* FIXME: Add show more button */
 }

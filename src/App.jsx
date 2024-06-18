@@ -6,7 +6,7 @@ import RootLayout from './pages/Layout/RootLayout';
 import Genre from './pages/Genre';
 import Library from './pages/Library';
 import Show from './pages/Show';
-import fetchAllShows from './loaders';
+import { fetchAllShows, showLoader } from './loaders';
 
 const router = createBrowserRouter([
   {
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
         index: true,
         element: <Home />,
       }, // path: ""
-      { path: 'show/:showId', element: <Show /> },
+      { path: 'show/:showId', element: <Show />, loader: showLoader },
       { path: 'search', element: <Search /> },
       { path: 'search/:genreId', element: <Genre /> },
       {
