@@ -1,0 +1,45 @@
+.item {
+  background-color: var(--color-gray-800);
+  height: 300px;
+  padding: 25px;
+  border-radius: 10px;
+}
+
+.item a {
+  text-decoration: none;
+  color: var(--color-gray-200);
+  display: flex;
+  background-color: var(--color-gray-800);
+  overflow: hidden;
+  margin: auto;
+}
+
+.item a:hover {
+  transform: scale(1.02);
+}
+
+.imageContainer {
+  width: 250px;
+}
+
+.item img {
+  width: 250px;
+  height: 250px;
+  object-fit: fill;
+  border-radius: 10px;
+}
+
+.details {
+  padding: 0 2rem;
+  max-width: 1000px;
+  text-align: left;
+}
+
+.item h2 {
+  margin: 0 0 2rem 0;
+}
+
+.description {
+  height: 3rem;
+  overflow-y: hidden; /* FIXME: Add show more button */
+}

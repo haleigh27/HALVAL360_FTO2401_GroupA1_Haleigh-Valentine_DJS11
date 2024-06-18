@@ -1,0 +1,11 @@
+.previews {
+  margin: auto;
+  padding: 10px;
+}
+
+.list {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
