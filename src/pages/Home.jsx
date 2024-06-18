@@ -21,7 +21,7 @@ export default function Home() {
     <>
       <div>Recommended shows</div>
       <SortDropdown onSortChange={handleSortOptionChange} />
-      <PreviewList genre="All" previewListData={sortedShowsArray} />
+      <PreviewList genre="All Shows" previewListData={sortedShowsArray} />
     </>
   );
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import genres from '../genreTypes';
+import SearchByTitle from '../components/dropdown/SearchByTitle';
 
 import classes from './Search.module.css';
 
@@ -8,8 +9,7 @@ export default function Search() {
   return (
     <>
       <div>
-        <input type="text" />
-        <div>icon</div>
+        <SearchByTitle />
       </div>
       <div>
         <h1>Genres</h1>

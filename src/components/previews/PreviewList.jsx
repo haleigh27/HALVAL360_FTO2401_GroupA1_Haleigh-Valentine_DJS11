@@ -9,7 +9,7 @@ export default function PreviewList({ genre, previewListData }) {
   return (
     <>
       <div className={classes.previews}>
-        <h1>{`${genre} Shows`}</h1>
+        <h1>{genre}</h1>
       </div>
       <div>
         <ul className={classes.list}>
