@@ -1,13 +1,15 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import Home from './pages/Home';
 import Search from './pages/Search';
 import RootLayout from './pages/Layout/RootLayout';
 import Genre from './pages/Genre';
-import Library from './pages/Library';
+import Favourites from './pages/Favourites';
 import Show from './pages/Show';
 import ErrorPage from './pages/ErrorPage';
 import { fetchAllShows, showLoader, genreLoader } from './loaders';
+import store from './store/store';
 
 const router = createBrowserRouter([
   {
@@ -30,13 +32,17 @@ const router = createBrowserRouter([
         element: <Show />,
         loader: showLoader,
       },
-      { path: 'library', element: <Library /> },
+      { path: 'library', element: <Favourites /> },
     ],
   },
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  );
 }
 
 export default App;
