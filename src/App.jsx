@@ -6,12 +6,14 @@ import RootLayout from './pages/Layout/RootLayout';
 import Genre from './pages/Genre';
 import Library from './pages/Library';
 import Show from './pages/Show';
+import ErrorPage from './pages/ErrorPage';
 import { fetchAllShows, showLoader, genreLoader } from './loaders';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <RootLayout />,
+    errorElement: <ErrorPage />,
     id: 'all-shows',
     loader: fetchAllShows,
     children: [
