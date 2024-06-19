@@ -3,14 +3,16 @@ import React, { useState } from 'react';
 import Episode from '../episodes/Episode';
 import classes from './Seasons.module.css';
 
-export default function Seasons({ seasonData }) {
-  const [selectedSeason, setSelectedSeason] = useState(seasonData[0].season);
+export default function Seasons({ showData }) {
+  const [selectedSeason, setSelectedSeason] = useState(
+    showData.seasons[0].season
+  );
 
   const handleSeasonChange = (event) => {
     setSelectedSeason(Number(event.target.value));
   };
 
-  const selectedSeasonData = seasonData.find(
+  const selectedSeasonData = showData.seasons.find(
     (season) => season.season === selectedSeason
   );
 
@@ -19,7 +21,7 @@ export default function Seasons({ seasonData }) {
       <div className={classes.selectionBar}>
         <h3>{`Episodes: ${selectedSeasonData.episodes.length}`}</h3>
         <select id="season-select" onChange={handleSeasonChange}>
-          {seasonData.map((season) => (
+          {showData.seasons.map((season) => (
             <option key={season.season} value={season.season}>
               {season.title}
             </option>
@@ -30,9 +32,14 @@ export default function Seasons({ seasonData }) {
         <ul className={classes.list}>
           {selectedSeasonData.episodes.map((episode) => (
             <Episode
-              key={`S${selectedSeason}E${episode.episode}`}
+              key={`S${selectedSeasonData.season}E${episode.episode}`}
               episode={episode}
-              image={selectedSeasonData.image}
+              showId={showData.id}
+              showTitle={showData.title}
+              showDescription={showData.description}
+              seasonNumber={selectedSeasonData.season}
+              seasonTitle={selectedSeasonData.title}
+              seasonImage={selectedSeasonData.image}
             />
           ))}
         </ul>

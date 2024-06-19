@@ -15,7 +15,7 @@ export default function Show() {
       </Link>
       <div>
         <PodcastDetails data={data} />
-        <Seasons seasonData={data.seasons} />
+        <Seasons showData={data} />
       </div>
     </div>
   );

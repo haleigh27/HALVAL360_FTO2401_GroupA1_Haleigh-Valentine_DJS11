@@ -54,7 +54,7 @@ const favouritesSlice = createSlice({
         });
       }
     },
-    removeFavorite: (state, action) => {
+    removeFavourite: (state, action) => {
       const { showId, seasonNumber, episode } = action.payload;
       const show = state.find((show) => show.id === showId);
       if (show) {
@@ -79,5 +79,5 @@ const favouritesSlice = createSlice({
   },
 });
 
-export const { addFavorite, removeFavorite } = favouritesSlice.actions;
+export const { addFavourite, removeFavourite } = favouritesSlice.actions;
 export default favouritesSlice.reducer;
