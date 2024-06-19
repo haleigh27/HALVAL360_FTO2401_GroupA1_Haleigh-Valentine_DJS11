@@ -21,12 +21,14 @@ const favouritesSlice = createSlice({
         const existingSeason = existingShow.seasons.find(
           (season) => season.season === seasonNumber
         );
+        // Show and season exist in favourites: push to episodes
         if (existingSeason) {
           existingSeason.episodes.push({
             ...episode,
             timestampFavourited: new Date().toISOString(),
           });
         } else {
+          // Show exists but not season: push to seasons
           existingShow.seasons.push({
             season: seasonNumber,
             title: seasonTitle,
@@ -37,6 +39,7 @@ const favouritesSlice = createSlice({
           });
         }
       } else {
+        // Show does not yet exist in favourites
         state.push({
           id: showId,
           title: showTitle,
@@ -71,8 +74,10 @@ const favouritesSlice = createSlice({
             );
           }
         }
+        // Remove shoe if no seasons exist in favourites
         if (show.seasons.length === 0) {
-          return state.filter((show) => show.id !== showId);
+          const index = state.indexOf(show);
+          state.splice(index, 1);
         }
       }
     },
