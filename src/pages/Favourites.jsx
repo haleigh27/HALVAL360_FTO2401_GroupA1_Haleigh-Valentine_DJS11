@@ -150,14 +150,13 @@ export default function Favourites() {
           {/* Display show to user */}
           <h2>{show.title}</h2>
           {show.seasons.map((season) => (
-            <div key={season.season}>
+            <div key={`S${show.id}S${season.season}`}>
               {/* Display show season to user */}
               <h3>{season.title}</h3>
               {/* Display favourited episodes to user */}
               {season.episodes.map((episode) => (
-                <div>
+                <div key={`S${season.season}E${episode.episode}`}>
                   <Episode
-                    key={`S${season}E${episode.episode}`}
                     episode={episode}
                     showId={show.id}
                     showTitle={show.title}
