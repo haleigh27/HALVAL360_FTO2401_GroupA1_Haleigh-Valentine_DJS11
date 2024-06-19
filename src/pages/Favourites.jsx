@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Episode from '../components/episodes/Episode';
+import SortDropdown from '../components/dropdown/SortDropdown';
+import sortShows from '../components/dropdown/sortShows';
 
 export default function Favourites() {
   const favourites = useSelector((state) => state.favourites);
@@ -8,7 +10,10 @@ export default function Favourites() {
     showId: '',
     seasonNumber: '',
   });
-  const [sort, setSort] = useState('mostRecent');
+  // Sort favourites by show title and recently updated
+  const [sortShowOption, setSortShowOption] = useState('a-z');
+  // Sort episodes within shows and seasons by recently added
+  const [episodeSort, setEpisodeSort] = useState('mostRecent');
 
   // Set new show filter
   const handleShowFilterChange = (event) => {
@@ -27,9 +32,14 @@ export default function Favourites() {
     });
   };
 
-  // Set sort recently updated
-  const handleSortChange = (event) => {
-    setSort(event.target.value);
+  // Set sort favourited shows by name and updated date
+  const handleSortShowChange = (option) => {
+    setSortShowOption(option);
+  };
+
+  // Set sort recently updated (episodes within a season)
+  const handleSortChange = (option) => {
+    setEpisodeSort(option);
   };
 
   // Filter favourites array based on filter selections.
@@ -50,18 +60,21 @@ export default function Favourites() {
     return true;
   });
 
+  // Sort favourited shows by name and updated date
+  const sortedFavourites = sortShows(filteredFavourites, sortShowOption);
+
   // Sort episodes within each season by timestamp added
-  const sortedFavourites = filteredFavourites.map((show) => ({
+  const sortedEpisodeFavourites = sortedFavourites.map((show) => ({
     ...show,
     seasons: show.seasons.map((season) => {
       // Sort season episodes by timestamp
       const sortedEpisodes = [...season.episodes].sort((a, b) => {
         const dateA = new Date(a.timestampFavourited);
         const dateB = new Date(b.timestampFavourited);
-        if (sort === 'mostRecent') {
+        if (episodeSort === 'mostRecent') {
           return dateB - dateA;
         }
-        if (sort === 'leastRecent') {
+        if (episodeSort === 'leastRecent') {
           return dateA - dateB;
         }
         return 0;
@@ -117,17 +130,22 @@ export default function Favourites() {
       </div>
       {/* Dropdown: Sorting */}
       <div>
+        {/* Dropdown: Sort by show title or date updated */}
+        <label>
+          Sort Shows by:
+          <SortDropdown onSortChange={handleSortShowChange} />
+        </label>
         {/* Dropdown: Sort by date added */}
         <label>
-          Sort by:
-          <select value={sort} onChange={handleSortChange}>
+          Sort Episodes in Show by:
+          <select value={episodeSort} onChange={handleSortChange}>
             <option value="mostRecent">Most Recently Added</option>
             <option value="leastRecent">Least Recently Added</option>
           </select>
         </label>
       </div>
       {/* Display favourites */}
-      {sortedFavourites.map((show) => (
+      {sortedEpisodeFavourites.map((show) => (
         <div key={show.id}>
           {/* Display show to user */}
           <h2>{show.title}</h2>
@@ -139,7 +157,7 @@ export default function Favourites() {
               {season.episodes.map((episode) => (
                 <div>
                   <Episode
-                    key={episode.episode}
+                    key={`S${season}E${episode.episode}`}
                     episode={episode}
                     showId={show.id}
                     showTitle={show.title}
