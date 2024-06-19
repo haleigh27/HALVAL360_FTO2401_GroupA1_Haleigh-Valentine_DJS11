@@ -18,6 +18,7 @@ export async function fetchAllShows() {
 // React Router passes an object to the loader function when executing it for you.
 // A request property which contains a request object.
 // A params property which contains an object with all of your route parameters.
+// eslint-disable-next-line no-unused-vars
 export async function showLoader({ request, params }) {
   // Get param
   const id = params.showId;
@@ -37,6 +38,7 @@ export async function showLoader({ request, params }) {
   }
 }
 
+// eslint-disable-next-line no-unused-vars
 export async function genreLoader({ request, params }) {
   // Get param
   const id = params.genreId;
