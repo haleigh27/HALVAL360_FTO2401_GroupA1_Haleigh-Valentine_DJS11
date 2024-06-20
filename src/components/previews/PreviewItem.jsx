@@ -1,12 +1,16 @@
 /* eslint-disable react/prop-types */
-
 // Creates an individual preview for podcast show.
 import React from 'react';
 import { Link } from 'react-router-dom';
+import getGenresByIds from '../../utils/utils';
 
 import classes from './PreviewItem.module.css';
 
 export default function PreviewItem({ previewData }) {
+  // Get genre Titles
+  const genreIds = previewData.genres.map((id) => id.toString());
+  const genreTitles = getGenresByIds(genreIds);
+  // Preview display
   return (
     <li className={classes.item}>
       <Link to={`show/${previewData.id}`}>
@@ -17,7 +21,10 @@ export default function PreviewItem({ previewData }) {
           <h2>{previewData.title}</h2>
           <p className={classes.description}>{previewData.description}</p>
           <p>{`Seasons: ${previewData.seasons}`}</p>
-          <p>{`Genre: ${previewData.genres}`}</p>
+          <p>
+            Genre:{' '}
+            <span className={classes.genre}>{genreTitles.join(', ')}</span>
+          </p>
           <p>{`Last updated: ${previewData.updated}`}</p>
         </div>
       </Link>

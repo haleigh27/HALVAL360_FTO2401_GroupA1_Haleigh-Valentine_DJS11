@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import genres from '../../genreTypes';
+import genres from '../../utils/genreTypes';
 
 export default function GenreDropdown({ selectedGenre, onGenreChange }) {
   return (

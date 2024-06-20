@@ -45,6 +45,11 @@
   text-overflow: ellipsis; /* FIXME: Add show more button */
 }
 
+.genre {
+  color: rgb(87, 194, 193);
+  font-weight: bold;
+}
+
 @media (max-width: 600px) {
   .item {
     height: auto;
