@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import Episode from '../components/episodes/Episode';
 import SortDropdown from '../components/dropdown/SortDropdown';
 import sortShows from '../components/dropdown/sortShows';
+import { convertDate } from '../utils/utils';
 
 export default function Favourites() {
   const favourites = useSelector((state) => state.favourites);
@@ -166,7 +167,9 @@ export default function Favourites() {
                     seasonImage={season.image}
                   />
                   {/* Display date and time user added item to favourites */}
-                  <p>{`Date Favourited: ${episode.timestampFavourited}`}</p>
+                  <p>
+                    Date Favourited: {convertDate(episode.timestampFavourited)}
+                  </p>
                 </div>
               ))}
             </div>

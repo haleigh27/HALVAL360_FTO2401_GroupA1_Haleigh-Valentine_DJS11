@@ -2,7 +2,7 @@
 // Creates an individual preview for podcast show.
 import React from 'react';
 import { Link } from 'react-router-dom';
-import getGenresByIds from '../../utils/utils';
+import { getGenresByIds, convertDate } from '../../utils/utils';
 
 import classes from './PreviewItem.module.css';
 
@@ -10,6 +10,7 @@ export default function PreviewItem({ previewData }) {
   // Get genre Titles
   const genreIds = previewData.genres.map((id) => id.toString());
   const genreTitles = getGenresByIds(genreIds);
+
   // Preview display
   return (
     <li className={classes.item}>
@@ -25,7 +26,7 @@ export default function PreviewItem({ previewData }) {
             Genre:{' '}
             <span className={classes.genre}>{genreTitles.join(', ')}</span>
           </p>
-          <p>{`Last updated: ${previewData.updated}`}</p>
+          <p>Last updated: {convertDate(previewData.updated)}</p>
         </div>
       </Link>
     </li>
