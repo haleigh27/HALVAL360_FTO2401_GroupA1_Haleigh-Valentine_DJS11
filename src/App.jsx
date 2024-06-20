@@ -6,7 +6,8 @@ import Search from './pages/Search';
 import RootLayout from './pages/Layout/RootLayout';
 import Genre from './pages/Genre';
 import Favourites from './pages/Favourites';
-import Show from './pages/Show';
+import Show from './pages/Show/Show';
+import Season from './pages/Show/Season';
 import ErrorPage from './pages/ErrorPage';
 import { fetchAllShows, showLoader, genreLoader } from './loaders';
 import store from './store/store';
@@ -25,7 +26,15 @@ const router = createBrowserRouter([
         element: <Home />,
       }, // path: ""
       { path: 'search', element: <Search /> },
-      { path: 'show/:showId', element: <Show />, loader: showLoader },
+      {
+        path: 'show/:showId',
+        id: 'selected-show',
+        loader: showLoader,
+        children: [
+          { path: '', element: <Show /> },
+          { path: ':seasonId', element: <Season /> },
+        ],
+      },
       { path: 'search/:genreId', element: <Genre />, loader: genreLoader },
       { path: 'library', element: <Favourites /> },
     ],

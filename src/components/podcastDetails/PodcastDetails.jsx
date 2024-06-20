@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import TabButton from '../navigation/TabButton';
 
 import classes from './PodcastDetails.module.css';
@@ -23,10 +24,12 @@ export default function PodcastDetails({ data }) {
     tabContent = (
       <div id="tab-content_seasons" className={classes.sliderContainer}>
         {data.seasons.map((season) => (
-          <div key={season.season} className={classes.slide}>
-            <p>{season.title}</p>
-            <img src={season.image} alt={`${season.title} cover`} />
-          </div>
+          <Link key={season.season} to={`${season.season}`}>
+            <div className={classes.slide}>
+              <p>{season.title}</p>
+              <img src={season.image} alt={`${season.title} cover`} />
+            </div>
+          </Link>
         ))}
       </div>
     );
