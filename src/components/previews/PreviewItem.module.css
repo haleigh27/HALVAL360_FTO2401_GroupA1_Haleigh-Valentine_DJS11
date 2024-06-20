@@ -44,3 +44,13 @@
   overflow-y: hidden; /* FIXME: Add show more button */
   text-overflow: ellipsis; /* FIXME: Add show more button */
 }
+
+@media (max-width: 600px) {
+  .item {
+    height: auto;
+  }
+  .item a {
+    display: flex;
+    flex-direction: column;
+  }
+}
