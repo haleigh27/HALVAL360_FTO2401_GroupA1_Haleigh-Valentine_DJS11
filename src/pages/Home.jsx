@@ -4,6 +4,7 @@ import PreviewList from '../components/previews/PreviewList';
 import SortDropdown from '../components/dropdown/SortDropdown';
 import sortShows from '../components/dropdown/sortShows';
 import GenreDropdown from '../components/dropdown/GenreDropdown';
+import { getGenresByIds } from '../utils/utils';
 
 export default function Home() {
   const allShowsData = useRouteLoaderData('all-shows');
@@ -38,7 +39,6 @@ export default function Home() {
   const handleGenreChange = (event) => {
     const selectedGenreId = event.target.value;
     setSearchParams({ genre: selectedGenreId });
-    console.log(genreArray);
   };
 
   return (
@@ -51,7 +51,10 @@ export default function Home() {
           onGenreChange={handleGenreChange}
         />
       </div>
-      <PreviewList genre="All Shows" previewListData={genreArray} />
+      <PreviewList
+        genre={genre !== 'All' ? getGenresByIds([genre]) : 'All Shows'}
+        previewListData={genreArray}
+      />
     </>
   );
 }

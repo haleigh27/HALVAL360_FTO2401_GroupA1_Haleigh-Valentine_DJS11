@@ -14,7 +14,7 @@ export default function PreviewItem({ previewData }) {
   // Preview display
   return (
     <li className={classes.item}>
-      <Link to={`show/${previewData.id}`}>
+      <Link to={`/show/${previewData.id}`}>
         <div className={classes.imageContainer}>
           <img src={previewData.image} alt="Show preview" />
         </div>

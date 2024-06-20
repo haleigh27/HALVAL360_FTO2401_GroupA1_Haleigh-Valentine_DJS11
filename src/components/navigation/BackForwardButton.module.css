@@ -1,0 +1,13 @@
+.navButton {
+  color: #74c0fc;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 2px;
+  margin: 0;
+}
+
+.navButton.disabled {
+  color: #333; /* Dark color for disabled state */
+  cursor: not-allowed;
+}

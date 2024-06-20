@@ -1,5 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import BackButton from './BackButton';
+import ForwardButton from './ForwardButton';
 
 import classes from './MainNavigation.module.css';
 
@@ -41,6 +43,10 @@ export default function MainNavigation() {
           </li>
         </ul>
       </nav>
+      <div className={classes.navigationButtons}>
+        <BackButton />
+        <ForwardButton />
+      </div>
     </header>
   );
 }

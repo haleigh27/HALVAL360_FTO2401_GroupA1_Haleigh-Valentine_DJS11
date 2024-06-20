@@ -18,7 +18,6 @@ export default function Search() {
             <li key={genre.id}>
               <Link to={genre.id} className={classes.genreLink}>
                 <h2>{genre.title}</h2>
-                {console.log(genre)}
               </Link>
             </li>
           ))}

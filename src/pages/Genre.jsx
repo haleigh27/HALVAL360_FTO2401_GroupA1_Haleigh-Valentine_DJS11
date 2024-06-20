@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLoaderData, useRouteLoaderData, Link } from 'react-router-dom';
+import { useLoaderData, useRouteLoaderData } from 'react-router-dom';
 
 import PreviewList from '../components/previews/PreviewList';
 import SortDropdown from '../components/dropdown/SortDropdown';
@@ -34,12 +34,6 @@ export default function Genre() {
       <p>{genreData.description}</p>
       <SortDropdown onSortChange={handleSortOptionChange} />
       <PreviewList genre={genreData.title} previewListData={sortedShowsArray} />
-      <p>
-        {/* Go up one level to previous ROUTE unless we set relative to path */}
-        <Link to=".." relative="path">
-          Back
-        </Link>
-      </p>
     </div>
   );
 }

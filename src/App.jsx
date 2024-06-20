@@ -10,6 +10,7 @@ import Show from './pages/Show';
 import ErrorPage from './pages/ErrorPage';
 import { fetchAllShows, showLoader, genreLoader } from './loaders';
 import store from './store/store';
+import AudioPlayer from './components/audioPlayer/AudioPlayer';
 
 const router = createBrowserRouter([
   {
@@ -23,15 +24,9 @@ const router = createBrowserRouter([
         index: true,
         element: <Home />,
       }, // path: ""
-      { path: 'show/:showId', element: <Show />, loader: showLoader },
       { path: 'search', element: <Search /> },
+      { path: 'show/:showId', element: <Show />, loader: showLoader },
       { path: 'search/:genreId', element: <Genre />, loader: genreLoader },
-      { path: 'search/show/:showId', element: <Show />, loader: showLoader },
-      {
-        path: 'search/:genreId/show/:showId',
-        element: <Show />,
-        loader: showLoader,
-      },
       { path: 'library', element: <Favourites /> },
     ],
   },
@@ -40,7 +35,10 @@ const router = createBrowserRouter([
 function App() {
   return (
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <div className="app">
+        <RouterProvider router={router} />
+        <AudioPlayer />
+      </div>
     </Provider>
   );
 }
