@@ -22,3 +22,16 @@
 h3 {
   margin-top: 0;
 }
+
+.playbackInfo {
+  margin-bottom: 0.5rem;
+}
+
+.completed {
+  color: green;
+  font-weight: bold;
+}
+
+.inProgress {
+  color: orange;
+}
