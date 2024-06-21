@@ -4,7 +4,8 @@ import PreviewList from '../components/previews/PreviewList';
 import SortDropdown from '../components/dropdown/SortDropdown';
 import sortShows from '../components/dropdown/sortShows';
 import GenreDropdown from '../components/dropdown/GenreDropdown';
-import { getGenresByIds } from '../utils/utils';
+import { getGenresByIds, getRandomItems } from '../utils/utils';
+import MiniPreviewCarousel from '../components/previews/MiniPreviewCarousel';
 
 export default function Home() {
   const allShowsData = useRouteLoaderData('all-shows');
@@ -41,9 +42,15 @@ export default function Home() {
     setSearchParams({ genre: selectedGenreId });
   };
 
+  const suggestedShows = getRandomItems(allShowsData, 10);
+
   return (
     <>
-      <div>Recommended shows</div>
+      <div>
+        <h4>Recommended for you!</h4>
+        <MiniPreviewCarousel data={suggestedShows} />
+      </div>
+
       <div>
         <SortDropdown onSortChange={handleSortOptionChange} />
         <GenreDropdown
