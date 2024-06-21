@@ -51,7 +51,6 @@ Alternatively visit the [Netlify link](https://muse-halval360.netlify.app) to vi
   - `index.css`
   - `main.jsx`
   - `index.html`
-    - `
 
 ## Technologies used
 
