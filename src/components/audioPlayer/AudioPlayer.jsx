@@ -75,7 +75,13 @@ export default function AudioPlayer() {
 
   return (
     <div className={classes.audioPlayer}>
-      <div></div>
+      <div className={classes.infoSection}>
+        <img src={currentEpisode.seasonImage} alt="Season" />
+        <div>
+          <h3>{currentEpisode.showTitle}</h3>
+          <p>{currentEpisode.title}</p>
+        </div>
+      </div>
       <audio
         ref={audioRef}
         src={currentEpisode.file}

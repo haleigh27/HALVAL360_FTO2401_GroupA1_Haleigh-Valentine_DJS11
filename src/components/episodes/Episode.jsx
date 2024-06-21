@@ -91,7 +91,9 @@ export default function Episode({
       dispatch(
         playEpisode({
           showId,
+          showTitle,
           seasonNumber,
+          seasonImage,
           episode: episode.episode,
           title: episode.title,
           description: episode.description,
