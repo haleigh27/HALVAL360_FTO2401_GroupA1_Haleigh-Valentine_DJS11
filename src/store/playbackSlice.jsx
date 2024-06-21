@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
 const playbackSlice = createSlice({
@@ -39,9 +40,21 @@ const playbackSlice = createSlice({
     pauseEpisode: (state) => {
       state.isPlaying = false;
     },
+    resetListeningHistory: (state) => {
+      state.inProgress = {};
+      state.listened = [];
+      state.isPlaying = false;
+      state.currentEpisode = {};
+      localStorage.removeItem('reduxState');
+    },
   },
 });
 
-export const { updateProgress, markAsListened, playEpisode, pauseEpisode } =
-  playbackSlice.actions;
+export const {
+  updateProgress,
+  markAsListened,
+  playEpisode,
+  pauseEpisode,
+  resetListeningHistory,
+} = playbackSlice.actions;
 export default playbackSlice.reducer;

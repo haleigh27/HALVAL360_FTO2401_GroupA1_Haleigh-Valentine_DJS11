@@ -5,6 +5,7 @@ import {
   updateProgress,
   markAsListened,
   pauseEpisode,
+  resetListeningHistory,
 } from '../../store/playbackSlice';
 
 import classes from './AudioPlayer.module.css';
@@ -24,15 +25,20 @@ export default function AudioPlayer() {
         ];
       if (progress) {
         audioRef.current.currentTime = progress;
+      } else {
+        audioRef.current.currentTime = 0;
       }
 
       if (isPlaying) {
-        audioRef.current.play();
+        audioRef.current.play().catch((error) => {
+          console.error('Failed to play audio:', error);
+        });
       } else {
         audioRef.current.pause();
       }
     }
-  }, [currentEpisode, isPlaying, inProgress]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentEpisode, isPlaying]);
 
   const handleTimeUpdate = () => {
     if (audioRef.current) {
@@ -58,6 +64,15 @@ export default function AudioPlayer() {
     dispatch(pauseEpisode());
   };
 
+  // Reset Listening History
+  const handleReset = () => {
+    dispatch(resetListeningHistory());
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
+  };
+
   return (
     <div className={classes.audioPlayer}>
       <audio
@@ -67,6 +82,9 @@ export default function AudioPlayer() {
         onEnded={handleEnded}
         controls
       />
+      <button type="button" onClick={handleReset}>
+        Reset Listening History
+      </button>
     </div>
   );
 }
