@@ -11,14 +11,16 @@ import {
 import classes from './AudioPlayer.module.css';
 
 export default function AudioPlayer() {
-  const dispatch = useDispatch();
-  const audioRef = useRef(null);
+  const dispatch = useDispatch(); // Redux hook for dispatching actions
+  const audioRef = useRef(null); // Reference to the <audio> element
   const { currentEpisode, isPlaying, inProgress } = useSelector(
-    (state) => state.playback
+    (state) => state.playback // Redux hook to access state from playbackSlice
   );
 
+  // Effect to handle changes in currentEpisode and isPlaying
   useEffect(() => {
     if (audioRef.current) {
+      // Retrieve progress from Redux state and set current time of audio element
       const progress =
         inProgress[currentEpisode.showId]?.[currentEpisode.seasonNumber]?.[
           currentEpisode.episode
@@ -29,6 +31,7 @@ export default function AudioPlayer() {
         audioRef.current.currentTime = 0;
       }
 
+      // Play or pause audio based on isPlaying state
       if (isPlaying) {
         audioRef.current.play().catch((error) => {
           console.error('Failed to play audio:', error);
@@ -40,6 +43,7 @@ export default function AudioPlayer() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentEpisode, isPlaying]);
 
+  // Handler for updating progress in Redux state on time update of audio
   const handleTimeUpdate = () => {
     if (audioRef.current) {
       dispatch(
@@ -53,6 +57,7 @@ export default function AudioPlayer() {
     }
   };
 
+  // Handler for marking episode as listened when it ends
   const handleEnded = () => {
     dispatch(
       markAsListened({
@@ -61,10 +66,10 @@ export default function AudioPlayer() {
         episodeNumber: currentEpisode.episode,
       })
     );
-    dispatch(pauseEpisode());
+    dispatch(pauseEpisode()); // Pause playback after marking as listened
   };
 
-  // Reset Listening History
+  // Handler for resetting listening history and stopping audio playback
   const handleReset = () => {
     dispatch(resetListeningHistory());
     if (audioRef.current) {
@@ -73,6 +78,7 @@ export default function AudioPlayer() {
     }
   };
 
+  // Rendering the AudioPlayer component
   return (
     <div className={classes.audioPlayer}>
       <div className={classes.infoSection}>
@@ -87,7 +93,7 @@ export default function AudioPlayer() {
         src={currentEpisode.file}
         onTimeUpdate={handleTimeUpdate}
         onEnded={handleEnded}
-        controls
+        controls // Render native controls for the audio element
       />
       <button type="button" onClick={handleReset}>
         Reset Listening History

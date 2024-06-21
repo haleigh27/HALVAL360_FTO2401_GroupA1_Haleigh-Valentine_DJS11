@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import classes from './MiniPreviewCarousel.module.css';
 
+// Carousel for Recommendations
 export default function MiniPreviewCarousel({ data }) {
   return (
     <div className={classes.container}>

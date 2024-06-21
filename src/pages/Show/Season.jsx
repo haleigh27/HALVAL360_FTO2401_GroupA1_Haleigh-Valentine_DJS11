@@ -11,6 +11,7 @@ export default function Season() {
     (season) => season.season.toString() === seasonId
   );
 
+  // Display individual season
   return (
     <div className={classes.container}>
       <header className={classes.header}>

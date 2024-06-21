@@ -8,9 +8,11 @@ export default function SearchByTitle() {
   const [suggestions, setSuggestions] = useState([]);
   const allShowsData = useRouteLoaderData('all-shows');
 
+  // Handler for updating query state with current input value
   const handleChange = (event) => {
     const { value } = event.target;
     setQuery(value);
+
     if (value) {
       const filteredShows = allShowsData.filter((show) =>
         show.title.toLowerCase().includes(value.toLowerCase())
@@ -33,7 +35,7 @@ export default function SearchByTitle() {
           className={classes.search}
         />
       </div>
-      <PreviewList genre="" previewListData={suggestions} />
+      <PreviewList genre="" previewListData={suggestions} />{' '}
     </div>
   );
 }

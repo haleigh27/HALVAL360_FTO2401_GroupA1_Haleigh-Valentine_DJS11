@@ -11,7 +11,7 @@ export default function PreviewItem({ previewData }) {
   const genreIds = previewData.genres.map((id) => id.toString());
   const genreTitles = getGenresByIds(genreIds);
 
-  // Preview display
+  // Preview display for shows
   return (
     <li className={classes.item}>
       <Link to={`/show/${previewData.id}`}>
