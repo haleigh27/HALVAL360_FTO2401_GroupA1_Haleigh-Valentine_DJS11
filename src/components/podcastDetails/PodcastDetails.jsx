@@ -7,17 +7,33 @@ import classes from './PodcastDetails.module.css';
 
 export default function PodcastDetails({ data }) {
   const [selectedTab, setSelectedTab] = useState();
+  const [isExpanded, setIsExpanded] = useState(false);
 
   function handleSelect(selectedButton) {
     setSelectedTab(selectedButton);
+  }
+
+  function toggleText() {
+    setIsExpanded(!isExpanded);
   }
 
   let tabContent;
 
   if (!selectedTab || selectedTab === 'about') {
     tabContent = (
-      <div id="tab-content_description" className={classes.aboutContainer}>
-        <p>{data.description}</p>
+      <div className={classes.aboutContainer}>
+        <p className={isExpanded ? classes.fullText : classes.truncated}>
+          {data.description}
+        </p>
+        {data.description && data.description.length > 400 && (
+          <button
+            onClick={toggleText}
+            type="button"
+            className={classes.seeMore}
+          >
+            {isExpanded ? 'See Less' : 'See More'}
+          </button>
+        )}
       </div>
     );
   } else if (selectedTab === 'seasons') {

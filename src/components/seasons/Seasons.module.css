@@ -1,4 +1,6 @@
 .selectionBar {
   display: flex;
   justify-content: space-between;
+  border-bottom: 2px solid var(--color-gray-700);
+  padding-bottom: 10px;
 }

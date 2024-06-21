@@ -7,7 +7,7 @@ export default function TabButton({ children, onSelect, isSelected }) {
   return (
     <li>
       <button
-        className={isSelected ? classes.active : undefined}
+        className={`${classes.tab} ${isSelected ? classes.active : undefined}`}
         onClick={onSelect}
         type="button"
       >
