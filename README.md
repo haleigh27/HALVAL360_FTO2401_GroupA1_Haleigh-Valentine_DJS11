@@ -66,6 +66,15 @@ Alternatively visit the [Netlify link](https://muse-halval360.netlify.app) to vi
 - Javascript JSX
 - CSS/ CSS modules
 
+### Usage Examples
+
+- Browsing a variety of podcast shows.
+- Filtering podcasts by title or date updated.
+- Listening to podcasts.
+- Keeping track of podcasts you've listened.
+- Keeping track of where you stopped listening to a various episodes so you can come back at and continue at any time.
+- Keeping track of all your favourite podcasts by favouriting them to view or listen to at a later stage.
+
 ## CORE PROJECT REQUIREMENTS ✅
 
 | CODE  | CATEGORY                           | USER STORIES                                                                                                                                                                                                   | DIFFICULTY | TOTAL |
@@ -127,3 +136,8 @@ Alternatively visit the [Netlify link](https://muse-halval360.netlify.app) to vi
 | P3.50 |                     | User is able to filter shows based on title by means of a text input                                        | Hard       | 3     |
 | P3.51 |                     | User is able to find shows based on fuzzy matching of concepts                                              | Hard       | 3     |
 | P3.52 |                     | App displays the exact timestamp location of where they left off any episode                                |
+
+### Contact
+
+Feel free to reach out if you would like to discuss this or any other coding related projects with me.
+Contact me at haleighvalentine@gmail.com
