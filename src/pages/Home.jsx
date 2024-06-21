@@ -7,6 +7,8 @@ import GenreDropdown from '../components/dropdown/GenreDropdown';
 import { getGenresByIds, getRandomItems } from '../utils/utils';
 import MiniPreviewCarousel from '../components/previews/MiniPreviewCarousel';
 
+import classes from './Home.module.css';
+
 export default function Home() {
   const allShowsData = useRouteLoaderData('all-shows');
   const [sortOption, setSortOption] = useState('a-z');
@@ -47,11 +49,10 @@ export default function Home() {
   return (
     <>
       <div>
-        <h4>Recommended for you!</h4>
         <MiniPreviewCarousel data={suggestedShows} />
       </div>
 
-      <div>
+      <div className={classes.dropdown}>
         <SortDropdown onSortChange={handleSortOptionChange} />
         <GenreDropdown
           selectedGenre={genre}

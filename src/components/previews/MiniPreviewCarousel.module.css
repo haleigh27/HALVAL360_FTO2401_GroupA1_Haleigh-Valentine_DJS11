@@ -7,6 +7,15 @@ menu {
   padding: 0;
 }
 
+.container {
+  background-color: var(--color-gray-800);
+  padding: 2px 0;
+}
+
+.recTitle {
+  margin: 1px 0;
+}
+
 .sliderContainer {
   display: flex;
   overflow-x: auto;
@@ -23,7 +32,7 @@ menu {
   color: #ffffff;
   flex: 0 0 180px;
   margin-right: 0.5px;
-  padding: 0.5px 5px;
+  padding: 8px 5px 0.5px;
   box-sizing: border-box;
   text-align: center;
   display: flex;

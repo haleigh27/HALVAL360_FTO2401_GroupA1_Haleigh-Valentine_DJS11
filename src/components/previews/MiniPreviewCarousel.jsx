@@ -6,15 +6,18 @@ import classes from './MiniPreviewCarousel.module.css';
 
 export default function MiniPreviewCarousel({ data }) {
   return (
-    <div className={`${classes.preview} ${classes.sliderContainer}`}>
-      {data.map((show) => (
-        <Link key={show.id} to={`/show/${show.id}`}>
-          <div className={classes.slide}>
-            <img src={show.image} alt={`${show.title} cover`} />
-            <p>{show.title}</p>
-          </div>
-        </Link>
-      ))}
+    <div className={classes.container}>
+      <h3 className={classes.recTitle}>Recommended for you!</h3>
+      <div className={`${classes.preview} ${classes.sliderContainer}`}>
+        {data.map((show) => (
+          <Link key={show.id} to={`/show/${show.id}`}>
+            <div className={classes.slide}>
+              <img src={show.image} alt={`${show.title} cover`} />
+              <p>{show.title}</p>
+            </div>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }

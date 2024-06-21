@@ -1,0 +1,43 @@
+.select {
+  height: 1.5rem;
+  width: auto;
+  padding-left: 2px;
+}
+
+.selectTitle {
+  padding: 0;
+  padding-top: 1rem;
+  margin: 0;
+  color: var(--primary-color);
+}
+
+.filSort {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 3px solid var(--color-gray-700);
+}
+.filter {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  padding: 1rem;
+}
+
+.sort {
+  display: flex;
+  padding: 1rem;
+}
+
+.dateFav {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 3px solid var(--color-gray-700);
+  font-size: 0.75rem;
+  text-align: left;
+  padding: 0 1rem;
+}
+
+.dateFav span {
+  color: rgb(135, 222, 135);
+}

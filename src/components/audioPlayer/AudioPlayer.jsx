@@ -75,6 +75,7 @@ export default function AudioPlayer() {
 
   return (
     <div className={classes.audioPlayer}>
+      <div></div>
       <audio
         ref={audioRef}
         src={currentEpisode.file}

@@ -1,9 +1,12 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Episode from '../components/episodes/Episode';
 import SortDropdown from '../components/dropdown/SortDropdown';
 import sortShows from '../components/dropdown/sortShows';
 import { convertDate } from '../utils/utils';
+
+import classes from './Favourites.module.css';
 
 export default function Favourites() {
   const favourites = useSelector((state) => state.favourites);
@@ -39,8 +42,8 @@ export default function Favourites() {
   };
 
   // Set sort recently updated (episodes within a season)
-  const handleSortChange = (option) => {
-    setEpisodeSort(option);
+  const handleSortChange = (event) => {
+    setEpisodeSort(event.target.value);
   };
 
   // Filter favourites array based on filter selections.
@@ -91,59 +94,64 @@ export default function Favourites() {
   return (
     <div>
       <h1>Favourites</h1>
-      {/* Dropdown Filters */}
-      <div>
-        {/* Dropdown: Filter by show */}
-        <label>
-          Filter by Show:
-          <select
-            value={favouritesFilter.showId}
-            onChange={handleShowFilterChange}
-          >
-            <option value="">All Shows</option>
-            {favourites.map((show) => (
-              <option key={show.id} value={show.id}>
-                {show.title}
-              </option>
-            ))}
-          </select>
-        </label>
-        {/* Dropdown: Filter by show season */}
-        <label>
-          Filter by Season:
-          <select
-            value={favouritesFilter.seasonNumber}
-            onChange={handleSeasonFilterChange}
-            disabled={!favouritesFilter.showId}
-          >
-            <option value="">All Seasons</option>
-            {favourites
-              .filter((show) => show.id === favouritesFilter.showId)
-              .flatMap((show) =>
-                show.seasons.map((season) => (
-                  <option key={season.season} value={season.season}>
-                    {season.title}
-                  </option>
-                ))
-              )}
-          </select>
-        </label>
-      </div>
       {/* Dropdown: Sorting */}
-      <div>
-        {/* Dropdown: Sort by show title or date updated */}
-        <label>
-          Sort Shows by:
+      <div className={classes.filSort}>
+        <div className={classes.sort}>
+          {/* Dropdown: Sort by show title or date updated */}
           <SortDropdown onSortChange={handleSortShowChange} />
-        </label>
-        {/* Dropdown: Sort by date added */}
-        <label>
-          Sort Episodes in Show by:
-          <select value={episodeSort} onChange={handleSortChange}>
-            <option value="mostRecent">Most Recently Added</option>
-            <option value="leastRecent">Least Recently Added</option>
-          </select>
-        </label>
+          {/* Dropdown: Sort by date added */}
+          <div>
+            <p className={classes.selectTitle}>Date Favourited:</p>
+            <select
+              value={episodeSort}
+              onChange={handleSortChange}
+              className={classes.select}
+            >
+              <option value="mostRecent">Most Recently Added</option>
+              <option value="leastRecent">Least Recently Added</option>
+            </select>
+          </div>
+        </div>
+        {/* Dropdown Filters */}
+        <div className={classes.filter}>
+          {/* Dropdown: Filter by show */}
+          <label>
+            Filter by Show:
+            <select
+              value={favouritesFilter.showId}
+              onChange={handleShowFilterChange}
+              className={classes.select}
+            >
+              <option value="">All Shows</option>
+              {favourites.map((show) => (
+                <option key={show.id} value={show.id}>
+                  {show.title}
+                </option>
+              ))}
+            </select>
+          </label>
+          {/* Dropdown: Filter by show season */}
+          <label>
+            Filter by Season:
+            <select
+              value={favouritesFilter.seasonNumber}
+              onChange={handleSeasonFilterChange}
+              disabled={!favouritesFilter.showId}
+              className={classes.select}
+            >
+              <option value="">All Seasons</option>
+              {favourites
+                .filter((show) => show.id === favouritesFilter.showId)
+                .flatMap((show) =>
+                  show.seasons.map((season) => (
+                    <option key={season.season} value={season.season}>
+                      {season.title}
+                    </option>
+                  ))
+                )}
+            </select>
+          </label>
+        </div>
       </div>
       {/* Display favourites */}
       {sortedEpisodeFavourites.map((show) => (
@@ -167,9 +175,16 @@ export default function Favourites() {
                     seasonImage={season.image}
                   />
                   {/* Display date and time user added item to favourites */}
-                  <p>
-                    Date Favourited: {convertDate(episode.timestampFavourited)}
-                  </p>
+                  <div className={classes.dateFav}>
+                    <p>
+                      <span>Date Favourited:</span>{' '}
+                      {convertDate(episode.timestampFavourited)}
+                    </p>
+                    <p>
+                      <span>{show.title}:</span>
+                      {` ${season.title}`}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>

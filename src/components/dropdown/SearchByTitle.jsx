@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useRouteLoaderData } from 'react-router-dom';
 import PreviewList from '../previews/PreviewList';
+import classes from './Dropdown.module.css';
 
 export default function SearchByTitle() {
   const [query, setQuery] = useState('');
@@ -21,14 +22,17 @@ export default function SearchByTitle() {
   };
 
   return (
-    <div className="App">
-      <h1>Search shows</h1>
-      <input
-        type="text"
-        value={query}
-        onChange={handleChange}
-        placeholder="Search for a specific show..."
-      />
+    <div>
+      <div>
+        <h1>Search shows</h1>
+        <input
+          type="text"
+          value={query}
+          onChange={handleChange}
+          placeholder="Search for a specific show..."
+          className={classes.search}
+        />
+      </div>
       <PreviewList genre="" previewListData={suggestions} />
     </div>
   );
