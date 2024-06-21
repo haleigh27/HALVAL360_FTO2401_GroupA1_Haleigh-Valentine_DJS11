@@ -9,7 +9,7 @@ import Favourites from './pages/Favourites';
 import Show from './pages/Show/Show';
 import Season from './pages/Show/Season';
 import ErrorPage from './pages/ErrorPage';
-import { fetchAllShows, showLoader, genreLoader } from './loaders';
+import { fetchAllShows, showLoader, genreLoader } from './utils/loaders';
 import store from './store/store';
 import AudioPlayer from './components/audioPlayer/AudioPlayer';
 
