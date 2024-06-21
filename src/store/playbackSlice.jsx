@@ -3,6 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 const playbackSlice = createSlice({
   name: 'playback',
   initialState: {
+    currentEpisode: {},
+    isPlaying: false,
     inProgress: {},
     listened: [],
   },
@@ -30,8 +32,16 @@ const playbackSlice = createSlice({
         state.listened.push({ showId, seasonNumber, episodeNumber });
       }
     },
+    playEpisode: (state, action) => {
+      state.currentEpisode = action.payload;
+      state.isPlaying = true;
+    },
+    pauseEpisode: (state) => {
+      state.isPlaying = false;
+    },
   },
 });
 
-export const { updateProgress, markAsListened } = playbackSlice.actions;
+export const { updateProgress, markAsListened, playEpisode, pauseEpisode } =
+  playbackSlice.actions;
 export default playbackSlice.reducer;
