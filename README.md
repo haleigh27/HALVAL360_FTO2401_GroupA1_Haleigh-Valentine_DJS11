@@ -1,6 +1,10 @@
 # DJS11 - Podcast App
 
-A fully functional podcast app built with React and Redux Redux Toolkit. Deployed to Netlify.
+A fully functional podcast app which allows users to browse through available shows, sort shows alphabetically or chronologically, search or filter shows by genre or title, listen to podcast episodes, keep track of listening history (or clear it to start fresh), add or remove episodes to a favourites library for easy access at a later stage and sort favourites alphabetically (by show title) or chronologically (by date).
+
+## Presentation assets
+
+[Features guide (as per user stories)](https://www.figma.com/design/jpYq3QEDDkfmKTS4grL17r/Muse---Podcast-User-Stories?node-id=0-1&t=pupzZgDkyUWTaAsg-1) (Made with Figma)
 
 ## Run the code
 
@@ -40,7 +44,7 @@ Alternatively visit the [Netlify link](https://muse-halval360.netlify.app) to vi
 
     - `loadState` and `Middleware`: Configuration to link redux state to local storage.
     - `favouritesSlice`: Reducer (State management for Favourites feature.)
-    - `playbackSlice`: Reducer (State management for media player featurs.)
+    - `playbackSlice`: Reducer (State management for media player features.)
     - `store`: Configuration for redux store.
 
   - `utils`
@@ -66,7 +70,7 @@ Alternatively visit the [Netlify link](https://muse-halval360.netlify.app) to vi
 - Javascript JSX
 - CSS/ CSS modules
 
-### Usage Examples
+## Usage Examples
 
 - Browsing a variety of podcast shows.
 - Filtering podcasts by title or date updated.
